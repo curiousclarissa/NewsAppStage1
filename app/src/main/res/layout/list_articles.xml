@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/articletitle"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:padding="16dp"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/contributor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="8dp"
+        tools:text="First and Last Name" />
+
+    <TextView
+        android:id="@+id/section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:text="Section" />
+
+    <TextView
+        android:id="@+id/publicationdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:text="Mar 6, 2010" />
+
+</LinearLayout>
