@@ -14,7 +14,7 @@ public class NewsLoader extends AsyncTaskLoader<List<NewsArticle>> {
     private static final String LOG_TAG = NewsLoader.class.getName();
     private String localUrl;
 
-    public EarthquakeLoader(Context context, String url) {
+    public NewsLoader(Context context, String url) {
         super(context);
         localUrl = url;
     }

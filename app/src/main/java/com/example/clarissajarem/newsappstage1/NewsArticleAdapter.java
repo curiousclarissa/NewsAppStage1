@@ -31,9 +31,9 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
      * Constructs a new {@link NewsArticleAdapter}.
      *
      * @param context of the app
-     * @param earthquakes is the list of earthquakes, which is the data source of the adapter
+     * @param newsArticles is the list of earthquakes, which is the data source of the adapter
      */
-    public EarthquakeAdapter(Context context, List<NewsArticle> newsArticles) {
+    public NewsArticleAdapter(Context context, List<NewsArticle> newsArticles) {
         super(context, 0, newsArticles);
     }
 
@@ -78,10 +78,8 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
 
         // Find the TextView with view ID time
         TextView timeView = (TextView) listItemView.findViewById(R.id.time);
-        // Format the time string (i.e. "4:30PM")
-        String formattedTime = formatTime(dateObject);
         // Display the time of the current earthquake in that TextView
-        timeView.setText(formattedTime);
+        timeView.setText(formattedDate);
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;
@@ -97,11 +95,4 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
         return dateFormat.format(dateObject);
     }
 
-    /**
-     * Return the formatted date string (i.e. "4:30 PM") from a Date object.
-     */
-    private String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-        return timeFormat.format(dateObject);
-    }
 }
