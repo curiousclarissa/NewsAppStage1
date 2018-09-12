@@ -169,12 +169,14 @@ public final class QueryUtils {
                 // Extract the value for the key called "webPublicationDate"
                 String webPublicationDate = properties.getString("webPublicationDate");
 
-                // Extract the value for the key called "url"
+                // Extract the value for the key called "webTitle"
                 String webTitle = properties.getString("webTitle");
+                // Extract the value for the key called "webUrl"
+                String webUrl = properties.getString("webUrl");
 
                 // Create a new {@link NewsArticle} object with the magnitude, location, time,
                 // and url from the JSON response.
-                NewsArticle newsArticle = new NewsArticle(section, contributor, webTitle, webPublicationDate);
+                NewsArticle newsArticle = new NewsArticle(section, contributor, webTitle, webPublicationDate, webUrl);
 
                 // Add the new {@link NewsArticle} to the list of earthquakes.
                 newsArticles.add(newsArticle);

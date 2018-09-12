@@ -64,14 +64,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(LOG_TAG, "Test: Earthquake Activity OnCreate Called");
+        Log.i(LOG_TAG, "Test: News Activity OnCreate Called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
 
         // Find a reference to the {@link ListView} in the layout
         ListView newsArticleListView = (ListView) findViewById(R.id.news_list);
 
-        // Create a new adapter that takes a list of earthquakes as an input
+        // Create a new adapter that takes a list of articles as an input
         localAdapter = new NewsArticleAdapter(this, new ArrayList<NewsArticle>());
         localEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         newsArticleListView.setEmptyView(localEmptyStateTextView);
@@ -82,7 +82,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         newsArticleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Find the current earthquake that was clicked on
+                // Find the current article that was clicked on
                 NewsArticle currentNewsArticle = localAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)

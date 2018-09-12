@@ -22,8 +22,7 @@ import java.util.List;
 public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
 
     /**
-     * The part of the location string from the USGS service that we use to determine
-     * whether or not there is a location offset present ("5km N of Cairo, Egypt").
+     * The part of the location string from the Guardian service that we use to determine
      */
     private static final String LOCATION_SEPARATOR = " of ";
 
@@ -51,20 +50,27 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
                     R.layout.list_articles, parent, false);
         }
 
-        // Find the earthquake at the given position in the list of earthquakes
+        // Find the earthquake at the given position in the list of articles
         NewsArticle currentArticle = getItem(position);
 
         // Find the TextView with view ID titleView
         TextView titleView = (TextView) listItemView.findViewById(R.id.articletitle);
+        String title = currentArticle.getWebTitle();
 
         // Find the TextView with view ID contributor
         TextView contributorView = (TextView) listItemView.findViewById(R.id.contributor);
 
 
-        // Get the original location string from the Earthquake object,
-        // which can be in the format of "5km N of Cairo, Egypt" or "Pacific-Antarctic Ridge".
+        // Get the original author string from the article object,
         String contributor = currentArticle.getContributor();
 
+        // Find the TextView with view ID sectionView
+        TextView sectionView = (TextView) listItemView.findViewById(R.id.section);
+        String sectionName = currentArticle.getSectionName();
+
+        // Find the TextView with view ID titleView
+        TextView urlView = (TextView) listItemView.findViewById(R.id.weburl);
+        String weburl = currentArticle.getWebUrl();
 
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateObject = new Date(currentArticle.getWebPublicationDate());
@@ -76,10 +82,7 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
         // Display the date of the current earthquake in that TextView
         dateView.setText(formattedDate);
 
-        // Find the TextView with view ID time
-        TextView timeView = (TextView) listItemView.findViewById(R.id.time);
-        // Display the time of the current earthquake in that TextView
-        timeView.setText(formattedDate);
+
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;

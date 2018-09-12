@@ -39,6 +39,6 @@ public class NewsArticle {
     public String getContributor(){return localContributor; }
     public String getWebTitle(){return  localWebTitle;}
     public String getWebPublicationDate(){return localWebPublicationDate;}
-    public StringBuilder getWebUrl(){return localWebUrl;}
+    public String getWebUrl(){return localWebUrl;}
 
 }
