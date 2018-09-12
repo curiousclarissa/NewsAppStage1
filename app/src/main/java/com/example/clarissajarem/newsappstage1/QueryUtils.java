@@ -24,7 +24,7 @@ import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Helper methods related to requesting and receiving earthquake data from USGS.
+ * Helper methods related to requesting and receiving earthquake data from Guardian.
  */
 public final class QueryUtils {
     /**
@@ -144,35 +144,35 @@ public final class QueryUtils {
 
             // Create a JSONObject from the SAMPLE_JSON_RESPONSE string
             JSONObject baseJsonResponse = new JSONObject(newsArticleJSON);
-
+            JSONObject response = baseJsonResponse.getJSONObject("response");
             // Extract the JSONArray associated with the key called "results",
             // which represents a list of features (or articles).
-            JSONArray newsArticleArray = baseJsonResponse.getJSONArray("results");
-
-            // For each earthquake in the earthquakeArray, create an {@link News Article} object
+            JSONArray newsArticleArray = response.getJSONArray("results");
+            // For each article in the newsArticle, create an {@link News Article} object
             for (int i = 0; i < newsArticleArray.length(); i++) {
 
                 // Get a single article at position i within the list of articles
                 JSONObject currentNewsArticle = newsArticleArray.getJSONObject(i);
 
-                // For a given earthquake, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that earthquake.
-                JSONObject properties = currentNewsArticle.getJSONObject("properties");
+                // For a given article, extract the JSONObject associated with the
+                // key called "results", which represents a list of all properties
+                // for that article.
 
                 // Extract the value for the key called "sectionName"
-                String section = properties.getString("sectionName");
+                String section = currentNewsArticle.getString("sectionName");
 
-                // Extract the value for the key called "contributor"
-                String contributor = properties.getString("contributor");
+                // Extract the JSONArray with the key "tags" - my tagsArray is your tags //
+                JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
+                //Get contributor
+                String contributor = currentNewsArticle.get
 
                 // Extract the value for the key called "webPublicationDate"
-                String webPublicationDate = properties.getString("webPublicationDate");
+                String webPublicationDate = currentNewsArticle.getString("webPublicationDate");
 
                 // Extract the value for the key called "webTitle"
-                String webTitle = properties.getString("webTitle");
+                String webTitle = currentNewsArticle.getString("webTitle");
                 // Extract the value for the key called "webUrl"
-                String webUrl = properties.getString("webUrl");
+                String webUrl = currentNewsArticle.getString("webUrl");
 
                 // Create a new {@link NewsArticle} object with the magnitude, location, time,
                 // and url from the JSON response.
@@ -188,6 +188,7 @@ public final class QueryUtils {
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the article JSON results", e);
         }
+
         // return a list of articles
         return newsArticles;
     }
