@@ -32,7 +32,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<List<NewsArticle>> onCreateLoader(int i, Bundle bundle) {
         Log.i(LOG_TAG, "Test: onCreateLoader Called");
         // Create a new loader for the given URL
-        return new NewsLoader(this, USGS_REQUEST_URL);
+        return new NewsLoader(this, GUARDIAN_REQUEST_URL);
     }
     @Override
     public void onLoadFinished(Loader<List<NewsArticle>> loader, List<NewsArticle> articles) {
@@ -58,7 +58,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         localAdapter.clear();
     }
     /** URL for earthquake data from the USGS dataset */
-    private static final String USGS_REQUEST_URL =
+    private static final String GUARDIAN_REQUEST_URL =
             "https://content.guardianapis.com/search?q=housing&api-key=88b7be55-1ef7-4d9d-81e5-a295fe565250&limit=10";
     private NewsArticle localAdapter;
 
