@@ -47,7 +47,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // If there is a valid list of {@link articles}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-
+        Log.i(LOG_TAG, "no articles here");
             if (articles != null && !articles.isEmpty()) {
             localAdapter.addAll(articles);
         }
@@ -88,7 +88,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri articleUri = Uri.parse(currentNewsArticle.getWebUrl());
 
-                // Create a new intent to view the earthquake URI
+                // Create a new intent to view the article URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
 
                 // Send the intent to launch a new activity

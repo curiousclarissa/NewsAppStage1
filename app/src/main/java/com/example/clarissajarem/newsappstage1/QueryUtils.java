@@ -170,16 +170,21 @@ public final class QueryUtils {
                 // Extract the value for the key called "webUrl"
                 String webUrl = currentNewsArticle.getString("webUrl");
 
-                //String contributor = currentNewsArticle.getString("webTitle");
+                String contributor = "placeholder";
 
                 // Create a new {@link NewsArticle} object with the section, contributor, title, publication date and url,
                 // and url from the JSON response.
                 JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
                 // Name the first JSONObject currentTags so we can get the string of webTitle key
-                JSONObject currentTags = tagsArray.getJSONObject(0);
+                if (tagsArray.length() >0){
+                    JSONObject currentTags = tagsArray.getJSONObject(0);
+                    //Assign the value of the key called "webTitle" to articleAuthor
+                     contributor = currentTags.getString("webTitle");
+                }
 
-                //Assign the value of the key called "webTitle" to articleAuthor
-                String contributor = currentTags.getString("webTitle");
+
+
+
 
                 NewsArticle newsArticle = new NewsArticle(section, contributor, webTitle, webPublicationDate, webUrl);
 
