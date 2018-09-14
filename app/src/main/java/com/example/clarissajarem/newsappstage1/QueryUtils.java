@@ -162,9 +162,6 @@ public final class QueryUtils {
                 String section = currentNewsArticle.getString("sectionName");
 
                 // Extract the JSONArray with the key "tags" - my tagsArray is your tags //
-                JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
-                //Get contributor
-                String contributor = currentNewsArticle.get
 
                 // Extract the value for the key called "webPublicationDate"
                 String webPublicationDate = currentNewsArticle.getString("webPublicationDate");
@@ -173,6 +170,9 @@ public final class QueryUtils {
                 String webTitle = currentNewsArticle.getString("webTitle");
                 // Extract the value for the key called "webUrl"
                 String webUrl = currentNewsArticle.getString("webUrl");
+                JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
+                //Get contributor
+                String contributor = currentNewsArticle.getString("contributor");
 
                 // Create a new {@link NewsArticle} object with the magnitude, location, time,
                 // and url from the JSON response.
