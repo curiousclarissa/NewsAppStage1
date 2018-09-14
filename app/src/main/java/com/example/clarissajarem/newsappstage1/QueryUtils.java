@@ -174,10 +174,10 @@ public final class QueryUtils {
                 //Get contributor
                 String contributor = null;
                 //handle when contributor tag is not null
-                if (tagsArray.length() != 0) {
+                if (tagsArray.length() > 0) {
                     try {contributor = currentNewsArticle.getString("webTitle");
                     } catch (JSONException e){
-                        Log.e(LOG_TAG, "missing one or more author names");
+                        Log.e(LOG_TAG, "missing author name");
                     }
                 }
 
