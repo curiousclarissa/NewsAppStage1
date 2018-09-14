@@ -94,8 +94,8 @@ public final class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpsURLConnection) url.openConnection();
-            //urlConnection.setReadTimeout(10000 /* milliseconds */);
-            //urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(10000 /* milliseconds */);
+            urlConnection.setConnectTimeout(15000 /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             if (urlConnection.getResponseCode() == 200) {
@@ -161,7 +161,6 @@ public final class QueryUtils {
                 // Extract the value for the key called "sectionName"
                 String section = currentNewsArticle.getString("sectionName");
 
-                // Extract the JSONArray with the key "tags" - my tagsArray is your tags //
 
                 // Extract the value for the key called "webPublicationDate"
                 String webPublicationDate = currentNewsArticle.getString("webPublicationDate");
@@ -170,23 +169,21 @@ public final class QueryUtils {
                 String webTitle = currentNewsArticle.getString("webTitle");
                 // Extract the value for the key called "webUrl"
                 String webUrl = currentNewsArticle.getString("webUrl");
-                JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
-                //Get contributor
-                String contributor = null;
-                //handle when contributor tag is not null
-                if (tagsArray.length() > 0) {
-                    try {contributor = currentNewsArticle.getString("webTitle");
-                    } catch (JSONException e){
-                        Log.e(LOG_TAG, "missing author name");
-                    }
-                }
 
+                //String contributor = currentNewsArticle.getString("webTitle");
 
-                // Create a new {@link NewsArticle} object with the magnitude, location, time,
+                // Create a new {@link NewsArticle} object with the section, contributor, title, publication date and url,
                 // and url from the JSON response.
+                JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
+                // Name the first JSONObject currentTags so we can get the string of webTitle key
+                JSONObject currentTags = tagsArray.getJSONObject(0);
+
+                //Assign the value of the key called "webTitle" to articleAuthor
+                String contributor = currentTags.getString("webTitle");
+
                 NewsArticle newsArticle = new NewsArticle(section, contributor, webTitle, webPublicationDate, webUrl);
 
-                // Add the new {@link NewsArticle} to the list of earthquakes.
+                // Add the new {@link NewsArticle} to the list of articles.
                 newsArticles.add(newsArticle);
             }
 

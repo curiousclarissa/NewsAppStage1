@@ -30,7 +30,7 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
      * Constructs a new {@link NewsArticleAdapter}.
      *
      * @param context of the app
-     * @param newsArticles is the list of earthquakes, which is the data source of the adapter
+     * @param newsArticles is the list of articles, which is the data source of the adapter
      */
     public NewsArticleAdapter(Context context, List<NewsArticle> newsArticles) {
         super(context, 0, newsArticles);
@@ -38,7 +38,7 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
 
     /**
      * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * in the list of articles.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
