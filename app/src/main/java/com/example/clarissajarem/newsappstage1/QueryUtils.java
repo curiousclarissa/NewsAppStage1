@@ -172,7 +172,15 @@ public final class QueryUtils {
                 String webUrl = currentNewsArticle.getString("webUrl");
                 JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
                 //Get contributor
-                String contributor = currentNewsArticle.getString("contributor");
+                String contributor = null;
+                //handle when contributor tag is not null
+                if (tagsArray.length() != 0) {
+                    try {contributor = currentNewsArticle.getString("webTitle");
+                    } catch (JSONException e){
+                        Log.e(LOG_TAG, "missing one or more author names");
+                    }
+                }
+
 
                 // Create a new {@link NewsArticle} object with the magnitude, location, time,
                 // and url from the JSON response.
