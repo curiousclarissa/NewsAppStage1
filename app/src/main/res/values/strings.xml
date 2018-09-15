@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NewsAppStage1</string>
     <!-- Text to display in the list when there are no articles [CHAR LIMIT=NONE] -->
-    <string name="no_articles">No articles found.</string>
+    <string name="no_articles">No articles found. \n Contact developer for help.</string>
     <!-- Author information for header bar -->
     <string name = "authorsname"> Author's Name</string>
     <!-- Title information for header bar -->
