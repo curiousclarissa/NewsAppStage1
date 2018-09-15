@@ -18,10 +18,12 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -167,7 +169,8 @@ public final class QueryUtils {
 
 
                 // Extract the value for the key called "webPublicationDate"
-                String webPublicationDate = formatDate(currentNewsArticle.getString("webPublicationDate"));
+                String dateToFormat = currentNewsArticle.getString("webPublicationDate");
+                String webPublicationDate = formatDate(dateToFormat);
 
                 // Extract the value for the key called "webTitle"
                 String webTitle = currentNewsArticle.getString("webTitle");
@@ -198,15 +201,23 @@ public final class QueryUtils {
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the article JSON results", e);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         // return a list of articles
         return newsArticles;
     }
 
-    private static String formatDate(String webPublicationDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
-        return dateFormat.format(webPublicationDate);
+    private static String formatDate(String dateToFormat) throws ParseException {
+        if (dateToFormat==null){
+            dateToFormat = "yyyy-MM-dd HH:mm:ss";
+        }
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z", Locale.US);
+        Date date1 = dateFormatter.parse("2015-2-22");
+        SimpleDateFormat webPublishedDateFormatter = new SimpleDateFormat("yyyy.MM.DD");
+        final String webPublishedDate = dateFormatter.format(date1);
+        return webPublishedDate;
     }
 
         }
