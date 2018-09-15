@@ -47,8 +47,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // If there is a valid list of {@link articles}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        Log.i(LOG_TAG, "no articles here");
+        Log.i(LOG_TAG, "here there shall be articles");
             if (articles != null && !articles.isEmpty()) {
+                Log.i(LOG_TAG, "I'll add them");
             localAdapter.addAll(articles);
         }
     }
