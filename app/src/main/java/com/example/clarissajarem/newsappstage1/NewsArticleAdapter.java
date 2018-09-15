@@ -37,7 +37,7 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
+     * Returns a list item view that displays information about the article at the given position
      * in the list of articles.
      */
     @Override
@@ -50,7 +50,7 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
                     R.layout.list_articles, parent, false);
         }
 
-        // Find the earthquake at the given position in the list of articles
+        // Find the article at the given position in the list of articles
         NewsArticle currentArticle = getItem(position);
 
         // Find the TextView with view ID titleView

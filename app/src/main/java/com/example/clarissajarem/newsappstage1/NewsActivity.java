@@ -22,7 +22,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public static final String LOG_TAG = NewsActivity.class.getName();
     /**
-     * Constant value for the earthquake loader ID. We can choose any integer.
+     * Constant value for the article loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int NEWSARTICLE_LOADER_ID = 1;
@@ -96,13 +96,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 startActivity(websiteIntent);
             }
         });
-        // Get a reference to the LoaderManager, in order to interact with loaders.
-        //LoaderManager loaderManager = getLoaderManager();
-
-        // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-        // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-        // because this activity implements the LoaderCallbacks interface).
-        //loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
         // Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);

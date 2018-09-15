@@ -30,7 +30,7 @@ import javax.net.ssl.HttpsURLConnection;
 import static java.util.Locale.US;
 
 /**
- * Helper methods related to requesting and receiving earthquake data from Guardian.
+ * Helper methods related to requesting and receiving article data from Guardian.
  */
 public final class QueryUtils {
     /**
