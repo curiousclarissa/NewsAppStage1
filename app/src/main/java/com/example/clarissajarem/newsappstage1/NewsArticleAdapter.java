@@ -56,21 +56,23 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
         // Find the TextView with view ID titleView
         TextView titleView = (TextView) listItemView.findViewById(R.id.articletitle);
         String title = currentArticle.getWebTitle();
+        titleView.setText(title);
 
         // Find the TextView with view ID contributor
         TextView contributorView = (TextView) listItemView.findViewById(R.id.contributor);
-
-
         // Get the original author string from the article object,
         String contributor = currentArticle.getContributor();
+        contributorView.setText(contributor);
 
         // Find the TextView with view ID sectionView
         TextView sectionView = (TextView) listItemView.findViewById(R.id.section);
         String sectionName = currentArticle.getSectionName();
+        sectionView.setText(sectionName);
 
         // Find the TextView with view ID titleView
         TextView urlView = (TextView) listItemView.findViewById(R.id.weburl);
         String weburl = currentArticle.getWebUrl();
+        urlView.setText(weburl);
 
 
         // Find the TextView with view ID date
@@ -79,6 +81,7 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
         //String formattedDate = formatDate(dateObject);
         // Display the date of the current article in that TextView
         String webDate = currentArticle.getWebPublicationDate();
+        dateView.setText(webDate);
 
 
 

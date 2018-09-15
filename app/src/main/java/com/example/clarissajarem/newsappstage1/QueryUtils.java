@@ -73,7 +73,7 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // extract relevant earthquake info from json and make a list of it
+        // extract relevant article info from json and make a list of it
         List<NewsArticle> newsArticles = extractFeatureFromJson(jsonResponse);
 
         //Return the list of {@link Earthquake}s
@@ -177,7 +177,7 @@ public final class QueryUtils {
                 // Extract the value for the key called "webUrl"
                 String webUrl = currentNewsArticle.getString("webUrl");
 
-                String contributor = "placeholder";
+                String contributor = "No author available";
 
                 // Create a new {@link NewsArticle} object with the section, contributor, title, publication date and url,
                 // and url from the JSON response.
@@ -208,6 +208,8 @@ public final class QueryUtils {
         // return a list of articles
         return newsArticles;
     }
+
+    //make date a format that can be displayed on screen
 
     private static String formatDate(String dateToFormat) throws ParseException {
         if (dateToFormat==null){

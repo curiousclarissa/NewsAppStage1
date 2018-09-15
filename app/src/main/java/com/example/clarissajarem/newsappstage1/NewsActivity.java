@@ -58,9 +58,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Loader reset, so we can clear out our existing data.
         localAdapter.clear();
     }
-    /** URL for earthquake data from the Guardian news dataset */
-    private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=housing&show-tags=contributor&api-key=88b7be55-1ef7-4d9d-81e5-a295fe565250&limit=10";
+    /** URL for article data from the Guardian news api */
+    //TODO: Insert grader URL and API key to test app, students key removed for security reasons
+    private static final String GUARDIAN_REQUEST_URL ="";
     private NewsArticleAdapter localAdapter;
 
     @Override
