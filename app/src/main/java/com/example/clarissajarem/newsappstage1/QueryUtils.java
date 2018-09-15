@@ -18,10 +18,14 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import static java.util.Locale.US;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from Guardian.
@@ -163,7 +167,7 @@ public final class QueryUtils {
 
 
                 // Extract the value for the key called "webPublicationDate"
-                String webPublicationDate = currentNewsArticle.getString("webPublicationDate");
+                String webPublicationDate = formatDate(currentNewsArticle.getString("webPublicationDate"));
 
                 // Extract the value for the key called "webTitle"
                 String webTitle = currentNewsArticle.getString("webTitle");
@@ -176,14 +180,11 @@ public final class QueryUtils {
                 // and url from the JSON response.
                 JSONArray tagsArray = currentNewsArticle.getJSONArray("tags");
                 // Name the first JSONObject currentTags so we can get the string of webTitle key
-                if (tagsArray.length() >0){
+                if (tagsArray.length() > 0) {
                     JSONObject currentTags = tagsArray.getJSONObject(0);
                     //Assign the value of the key called "webTitle" to articleAuthor
-                     contributor = currentTags.getString("webTitle");
+                    contributor = currentTags.getString("webTitle");
                 }
-
-
-
 
 
                 NewsArticle newsArticle = new NewsArticle(section, contributor, webTitle, webPublicationDate, webUrl);
@@ -203,5 +204,10 @@ public final class QueryUtils {
         return newsArticles;
     }
 
+    private static String formatDate(String webPublicationDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        return dateFormat.format(webPublicationDate);
+    }
 
-}
+        }
+

@@ -72,15 +72,15 @@ public class NewsArticleAdapter extends ArrayAdapter<NewsArticle> {
         TextView urlView = (TextView) listItemView.findViewById(R.id.weburl);
         String weburl = currentArticle.getWebUrl();
 
-        // Create a new Date object from the time in milliseconds of the earthquake
-        Date dateObject = new Date(currentArticle.getWebPublicationDate());
+        // Create a new Date object from the time in milliseconds of the article
+        String date = currentArticle.getWebPublicationDate();
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.publicationdate);
         // Format the date string (i.e. "Mar 3, 1984")
-        String formattedDate = formatDate(dateObject);
+        //String formattedDate = formatDate(dateObject);
         // Display the date of the current earthquake in that TextView
-        dateView.setText(formattedDate);
+        //dateView.setText(formattedDate);
 
 
 
