@@ -213,7 +213,7 @@ public final class QueryUtils {
         if (dateToFormat==null){
             dateToFormat = "yyyy-MM-dd HH:mm:ss";
         }
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z", Locale.US);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
         Date date1 = dateFormatter.parse(dateToFormat);
         SimpleDateFormat webPublishedDateFormatter = new SimpleDateFormat("yyyy.MM.DD");
         final String webPublishedDate = webPublishedDateFormatter.format(date1);
