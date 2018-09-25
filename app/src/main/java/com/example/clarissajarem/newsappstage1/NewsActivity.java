@@ -39,9 +39,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
-        String minArticles = sharedPrefs.getString(
-                getString(R.string.settings_min_numberofarticles_key),
-                getString(R.string.settings_min_numberofarticles_default));
+        String maxArticles = sharedPrefs.getString(
+                getString(R.string.settings_max_numberofarticles_key),
+                getString(R.string.settings_max_numberofarticles_default));
         String orderBy  = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
                 getString(R.string.settings_order_by_default)
@@ -54,10 +54,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Append query parameter and its value. For example, the `format=geojson`
         uriBuilder.appendQueryParameter("q", "housing");
-        uriBuilder.appendQueryParameter("limit", "10");
-        uriBuilder.appendQueryParameter("page-size", minArticles);
+        uriBuilder.appendQueryParameter("page-size", maxArticles);
         uriBuilder.appendQueryParameter("orderby", orderBy);
-        return new NewsLoader(this, GUARDIAN_REQUEST_URL);
+        String reporter = uriBuilder.toString();
+        Log.v("url", reporter);
+        return new NewsLoader(this, uriBuilder.toString());
     }
     @Override
     public void onLoadFinished(Loader<List<NewsArticle>> loader, List<NewsArticle> articles) {
@@ -83,9 +84,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Loader reset, so we can clear out our existing data.
         localAdapter.clear();
     }
+    //TODO: insert personal api key
     /** URL for article data from the Guardian news api */
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?&show-tags=contributor&api-key=88b7be55-1ef7-4d9d-81e5-a295fe565250&";
+            "https://content.guardianapis.com/search?q=housing&show-tags=contributor&api-key=";
     private NewsArticleAdapter localAdapter;
 
     @Override

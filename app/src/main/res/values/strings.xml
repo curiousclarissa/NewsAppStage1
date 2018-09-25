@@ -17,18 +17,21 @@
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">No internet connection.\nPlease connect to network to receive news articles.</string>
     <!-- Label for order-by number of articles option [CHAR LIMIT=20] -->
-    <string name="settings_order_by_numberofarticles_label">Number of Articles</string>
-    <string name="settings_order_by_numberofarticles_value" translatable="false">topic</string>
+    <string name="settings_order_by_numberofarticles_value" translatable="false">10</string>
 
-    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
-    <string name="settings_order_by_most_recent_label">Most Recent</string>
-    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+    <!-- Label for order-by oldest option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_oldest_label">oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+    <!-- Label for order-by newest option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_newest_label">newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
 
-    <string name="settings_min_numberofarticles_label">Minimum Number of Articles</string>
-    <string name="settings_min_numberofarticles_key" translatable="false">min_numberofarticles</string>
-    <string name="settings_min_numberofarticles_default" translatable="false">1</string>
+
+    <string name="settings_max_numberofarticles_label">Maximum Number of Articles</string>
+    <string name="settings_max_numberofarticles_key" translatable="false">max_numberofarticles</string>
+    <string name="settings_max_numberofarticles_default" translatable="false">3</string>
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_numberofarticles_value</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_oldest_value</string>
 </resources>
